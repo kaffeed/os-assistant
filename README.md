@@ -15,6 +15,8 @@ If you would like to be a contributer you must not develop bot features, steal a
 
     You should have received a copy of the GNU General Public License
     along with OS-Assistant.  If not, see http://www.gnu.org/licenses/.
+    
+If you would like to donate to this project send some bitcoins to the following address: 1PJQDEdFcH1XysfuUEZjoWC8MEFHZHB2ak
 
 
 ![alt text][logo]
