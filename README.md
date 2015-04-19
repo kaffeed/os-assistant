@@ -3,12 +3,6 @@ An Open Source alternative to the popular OSBuddy. Developed by a Runescape fan 
 
 If you would like to be a contributer you must not develop bot features, steal any propertariy code from OS Buddy. This client must not break any 3rd party client rules.
 
-
-![alt text][logo]
-[logo]: https://github.com/monsterhunter445/os-assistant/blob/master/OS%20Assistant/screenshot_client_alpha.png?raw=true
-
-
-
     OS-Assistant is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -20,4 +14,12 @@ If you would like to be a contributer you must not develop bot features, steal a
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with OS-Assistant.  If not, see <http://www.gnu.org/licenses/>.
+    along with OS-Assistant.  If not, see http://www.gnu.org/licenses/.
+
+
+![alt text][logo]
+[logo]: https://github.com/monsterhunter445/os-assistant/blob/master/OS%20Assistant/screenshot_client_alpha.png?raw=true
+
+
+
+
