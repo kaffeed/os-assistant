@@ -16,20 +16,13 @@ import javax.swing.JPanel;
  */
 public class ClientWindow extends javax.swing.JFrame {
 
-    private int diff = 0;
-    private String skill;
-    private JPanel glass;
-    private Graphics gfx;
+
     /**
      * Creates new form ClientWindow
      */
     public ClientWindow() {
         initComponents();
-        skill = "";
-        glass = (JPanel)this.getGlassPane();
-        glass.setVisible(true);
-        gfx = glass.getGraphics();
-        glass.setLayout(new FlowLayout());
+        setBackground(Color.BLACK);
     }
 
     

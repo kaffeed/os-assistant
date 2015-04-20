@@ -8,7 +8,9 @@ package os.assistant;
 import java.applet.Applet;
 import java.applet.AppletContext;
 import java.applet.AppletStub;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,6 +18,7 @@ import java.net.URLClassLoader;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 
 /**
@@ -127,14 +130,15 @@ public class OSAssistant {
         clientApplet.setLayout(null);
         clientApplet.init();
         clientApplet.start();
-        clientApplet.setSize(800, 800);
+        clientApplet.setPreferredSize(new Dimension(767, 507));
         final SkillList skillList = new SkillList();
+        skillList.setLocation(0, 0);
+        skillList.setPreferredSize(new Dimension(250, 400));
         skillList.setVisible(true);
-        skillList.setSize(400, 800);
-        clientFrame.setLayout(new FlowLayout());
+        clientFrame.setLayout(new BoxLayout(clientFrame.getContentPane(), BoxLayout.X_AXIS));
         clientFrame.setExtendedState(clientFrame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-        clientFrame.add(skillList);
         clientFrame.add(clientApplet);
+        clientFrame.add(skillList);
         clientFrame.pack();
         clientFrame.setVisible(true);
 
@@ -158,7 +162,7 @@ public class OSAssistant {
                         skillList.addSkillAll(player.getActiveSkills());
                         player.updatePlayerInformation();
                         Thread.sleep(600);
-                        //skillList.clear();
+                        
 
                     }
                 } catch (Exception e) {

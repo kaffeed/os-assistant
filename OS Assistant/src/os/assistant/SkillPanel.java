@@ -5,6 +5,7 @@
  */
 package os.assistant;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -22,9 +23,10 @@ public class SkillPanel extends javax.swing.JPanel implements Comparable<String>
      */
     public SkillPanel() {
         initComponents();
-        gfx = canvas.getGraphics();
+        setPreferredSize(new Dimension(200, 200));
+        
+      
     }
-    private Graphics gfx;
     private Image image;
 
     /**
@@ -40,7 +42,7 @@ public class SkillPanel extends javax.swing.JPanel implements Comparable<String>
         xpGained = new javax.swing.JLabel();
         xpRem = new javax.swing.JLabel();
         rate = new javax.swing.JLabel();
-        canvas = new java.awt.Canvas();
+        actions = new javax.swing.JLabel();
 
         skillName.setText("Skill Name:");
 
@@ -49,6 +51,8 @@ public class SkillPanel extends javax.swing.JPanel implements Comparable<String>
         xpRem.setText("Experience Remaining:");
 
         rate.setText("XP Rate:");
+
+        actions.setText("Actions Remaining: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -61,23 +65,20 @@ public class SkillPanel extends javax.swing.JPanel implements Comparable<String>
                     .addComponent(xpRem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(xpGained, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(canvas, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(skillName, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(skillName, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+                            .addComponent(actions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(canvas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(skillName)
-                        .addGap(18, 18, 18)))
+                .addContainerGap()
+                .addComponent(skillName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(actions)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(xpGained)
                 .addGap(11, 11, 11)
                 .addComponent(xpRem)
@@ -101,12 +102,15 @@ public class SkillPanel extends javax.swing.JPanel implements Comparable<String>
         this.stat = stat;
         skill_name = stat.skillName;
         try {
-            if (image != null)
+            if (image == null) {
                 image = ImageIO.read(new URL("http://www.runescape.com/img/rsp777/hiscores/skill_icon_" + stat.skillName.toLowerCase() + "1.gif"));
+                //System.out.println("Loading Image From: " + "http://www.runescape.com/img/rsp777/hiscores/skill_icon_" + stat.skillName.toLowerCase() + "1.gif");
+            }
         }
         catch (Exception e) {
-            image = null;
+            image = new BufferedImage(16,16, BufferedImage.TYPE_INT_ARGB);
         }
+        actions.setText("Actions Remaining: " + stat.ActionsLeft);
         skillName.setText("Skill Name: " + stat.skillName);
         xpGained.setText("XP Gained: " + stat.XPGained);
         xpRem.setText("XP Remaining: " + stat.XPRemaining);
@@ -120,7 +124,9 @@ public class SkillPanel extends javax.swing.JPanel implements Comparable<String>
     public void paint(Graphics g) {
         super.paint(g); //To change body of generated methods, choose Tools | Templates.
         if (image != null)
-            gfx.drawImage(image, 5, 5, null);
+            g.drawImage(image, 16, 24, null);
+        // g.drawRect(5, 5, 32, 32);
+        g.drawRect(0, 0, getWidth() - 5, getHeight() - 5);
     }
 
     @Override
@@ -135,7 +141,7 @@ public class SkillPanel extends javax.swing.JPanel implements Comparable<String>
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Canvas canvas;
+    private javax.swing.JLabel actions;
     private javax.swing.JLabel rate;
     private javax.swing.JLabel skillName;
     private javax.swing.JLabel xpGained;

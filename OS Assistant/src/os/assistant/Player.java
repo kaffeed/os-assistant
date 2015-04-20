@@ -173,12 +173,14 @@ public class Player {
     }
 
     public static int experienceToNextLevel(int level) {
-        return (int) (75 * Math.pow(2, level / (double) 7));
+        return (int)(75 * Math.pow(2, level/7.0));
     }
 
     public static int xPToLevel(int xp) {
         for (int i = 1; i < 99; i++) {
-            if (experienceAtLevel(i) >= xp && experienceAtLevel(i + 1) <= xp) {
+            int x = experienceAtLevel(i);
+            int y = experienceAtLevel(i+1);
+            if (x >= xp && y > xp) {
                 return i;
             }
         }
@@ -187,13 +189,18 @@ public class Player {
 
     public static int experienceAtLevel(int level) {
         int xp = 0;
-        for (int i = 1; i <= 99; i++) {
-            xp += experienceToNextLevel(level);
+        for (int i = 1; i <= level; i++) {
+            xp += experienceToNextLevel(i);
         }
         return xp;
     }
 
     public static int getNumberOfActionsToNextLevel(int level, int totalXP, int experienceGained) {
-        return (int) ((experienceAtLevel(level + 1) - experienceAtLevel(level)) / (double) experienceGained);
+        return (int) ((experienceAtLevel(level + 1) - totalXP) / (double) experienceGained);
+    }
+    
+    //TEST
+    public static void main(String[] args) {
+        System.out.println(experienceAtLevel(77+1) - 1516955);
     }
 }

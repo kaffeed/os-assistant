@@ -22,7 +22,7 @@ public class SkillList extends javax.swing.JPanel {
     public SkillList() {
         //initComponents();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBackground(Color.GRAY);
+        
     }
 
     /**
