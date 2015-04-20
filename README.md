@@ -20,7 +20,7 @@ If you would like to donate to this project send some bitcoins to the following 
 
 
 ![alt text][logo]
-[logo]: https://github.com/monsterhunter445/os-assistant/blob/master/OS%20Assistant/screenshot_client_alpha.png?raw=true
+[logo]: https://raw.githubusercontent.com/monsterhunter445/os-assistant/master/OS%20Assistant/screenshot_client_alpha_improved.png
 
 
 
